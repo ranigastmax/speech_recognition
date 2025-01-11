@@ -1,57 +1,62 @@
-import matplotlib.pylab as plt
-import numpy as np
-import pandas as pd
+import os
 import glob
 import librosa
-import os
-import wave
+import numpy as np
+import matplotlib.pyplot as plt
+import librosa.display
 
 
 def process_wav_files(main_folder):
-   
-    categories = ['down', 'up', 'one', 'eight', 'five']  # To pozniej do zmiany na razie wczytujemy po jednym zeby nie zabic komputera
-    selected_files = [] 
+    categories = ['down', 'up', 'yes', 'no', 'stop']
+    selected_files = []
 
- 
+    # Pobierz pliki z każdej kategorii
     for category in categories:
         folder_path = os.path.join(main_folder, category)
         if os.path.isdir(folder_path):
-         
             files = glob.glob(os.path.join(folder_path, '*.wav'))
-            if files:  
+            if files:
                 first_file = files[0]
                 selected_files.append((category, first_file))
             else:
-                print(f"Folder '{category}' jest pusty lub brak  .wav!")
+                print(f"Folder '{category}' pust/brak .wav!")
         else:
             print(f"Folder '{category}' nie istnieje")
 
-   
+    # Przetwórz pliki
     for category, file_path in selected_files:
-        print(f"Spektogram pliku: {file_path} z grupy {category}")
-
+        print(f"Przetwarzanie pliku: {file_path} z grupy {category}")
         try:
-          
-            y, sr = librosa.load(file_path)
+            # Próba wczytania pliku
+            y, sr = librosa.load(file_path, sr=None)
+            print(f"Plik {file_path} załadowany ")
 
-            fft= librosa.stft(y)  # FFT
+            #spektogram
+            fft = librosa.stft(y)
+            S_db = librosa.amplitude_to_db(np.abs(fft), ref=np.max)
 
+            # # Wyświetlenie spektrogramu
+            # plt.figure(figsize=(10, 4))
+            # librosa.display.specshow(S_db, x_axis='time', y_axis='hz', sr=sr)
+            # plt.title(f'Spektrogram dla {os.path.basename(file_path)} z grupy: {category}')
+            # plt.colorbar(format='%+2.0f dB')
+            # plt.show()
 
-            S_db = librosa.amplitude_to_db(np.abs(fft), ref=np.max)   #spektogram
+            ##mel spektogram
+            S_mel = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
+            S_mel_db = librosa.amplitude_to_db(S_mel, ref=np.max)
 
-
-        #display
             plt.figure(figsize=(10, 4))
-            librosa.display.specshow(S_db, x_axis='time', y_axis='hz', sr=sr)
-            plt.title(f'Spektrogram dla {os.path.basename(file_path)} z grupy: {category}')
+            librosa.display.specshow(S_mel_db, x_axis='time', y_axis='mel', sr=sr)
+            plt.title(f'MEL Spektrogram dla {os.path.basename(file_path)} z grupy: {category}')
             plt.colorbar(format='%+2.0f dB')
             plt.show()
 
-            # Zwrócenie rozmiaru spektrum
-            print(f"Spectrogram shape: {S_db.shape}")
+
 
         except Exception as e:
-            print(f"Error {file_path}: {e}")
+            print(f"Błąd przy przetwarzaniu pliku {file_path}: {e}")
+
 
 #---------------------------------------------------------usuniecie zbyt duzej ilosci datasetu
 # #input_file = "AudioData/validation_list.txt"
@@ -61,7 +66,7 @@ def process_wav_files(main_folder):
 # output_file = "AudioData/testing_list_filtered.txt"
 #
 #
-# exclusions = ["cat", "wow", "visual","tree","sheila","marvin","learn","house","happy","forward","follow","dog","cat","bird","bed","backward","background_noise"]
+# exclusions = ["cat","one","two","three","four","five","six","seven","eight","nine", "wow", "visual","tree","sheila","marvin","learn","house","happy","forward","follow","dog","cat","bird","bed","backward","background_noise"]
 #
 #
 # with open(input_file, "r") as infile:
