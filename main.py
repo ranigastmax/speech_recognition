@@ -11,26 +11,83 @@ import PrepareWavFiles
 import process_and_save_csv
 import process_and_save_csv as Pcsv
 from LimitFiles import limit_files_in_subfolders
+import split_files
+import train
 
-
-
-
-
+# Zapis spektrogramów
 main_folder = "AudioData"
 output_folder = "MelSpectrograms"
 
+# Selekcjonowanie danych train, val, test
+main_split = "Melspectrograms"
+output_split = "MelSpectrograms_splitted"
 
+batch_size = 128  # Liczba próbek w jednym kroku treningowym
 
-# process_and_save_csv.process_and_save_wav_info(main_folder,output_csv="grouped_files_with_duration.csv")
+# Zapisywanie do CSV
+# process_and_save_csv.process_and_save_wav_info(main_folder, output_csv="grouped_files_with_duration.csv")
 
-PrepareWavFiles.process_and_save_mel_spectrograms(main_folder, output_folder, n_mels=128, image_size=(128, 128))
+# Zapisywanie spektrogramu do zdjęcia, przygotowanie
+# PrepareWavFiles.process_and_save_mel_spectrograms(main_folder, output_folder, n_mels=128, image_size=(128, 128))
 
-#limit_files_in_subfolders(main_folder,2000) #usuniecie plikow z podfolderu jesli jest powyzej 2000
+# Limitowanie plików w folderze
+# limit_files_in_subfolders(main_folder, 2000)  # Usunięcie plików z podfolderu jeśli jest ich powyżej 2000
 
+# Podział na: train, val, test
+# split_files.split_dataset(main_split, output_split)
 
-# process_wav_files(main_folder)
+# Ścieżki do danych
+train_dir = "MelSpectrograms_splitted/train"
+val_dir = "MelSpectrograms_splitted/val"
+test_dir = "MelSpectrograms_splitted/test"
 
+num_classes = 11  # Ponieważ masz 11 klas
 
+# Definiowanie rozmiaru
+input_shape = (128, 128, 3)
 
+# Trenowanie, ładowanie danych do modelu
+train_dataset, val_dataset, test_dataset = train.load_data(train_dir, val_dir, test_dir, batch_size=batch_size)
 
-# limit_files_in_subfolders(main_folder, max_files=2000)
+# Tworzenie modelu
+model = train.build_model(input_shape, num_classes)
+
+# Kompilacja modelu
+model.compile(
+    optimizer='adam',
+    loss='categorical_crossentropy',  # Ponieważ to klasyfikacja wieloklasowa
+    metrics=['accuracy']
+)
+
+# Trening modelu
+history = model.fit(
+    train_dataset,
+    epochs=16,            # Liczba epok
+    validation_data=val_dataset   # Zbiór walidacyjny (do monitorowania procesu)
+)
+
+# Ocena modelu na zbiorze testowym
+test_loss, test_accuracy = model.evaluate(test_dataset)
+print(f"Test Loss: {test_loss}")
+print(f"Test Accuracy: {test_accuracy}")
+
+# Wykres dokładności i straty
+plt.plot(history.history['accuracy'], label='accuracy')
+plt.plot(history.history['val_accuracy'], label='val_accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend(loc='lower right')
+plt.show()
+
+plt.plot(history.history['loss'], label='loss')
+plt.plot(history.history['val_loss'], label='val_loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend(loc='upper right')
+plt.show()
+
+# Zapis modelu
+model.save('my_model.h5')
+
+# Do klasyfikacji nowych danych
+# predictions = model.predict(new_data)
