@@ -1,8 +1,9 @@
 import tensorflow as tf
-import matplotlib.pyplot as plt
 
-#ładowanie danych treningowych
-def load_data(train_dir, val_dir, test_dir, image_size=(128, 128), batch_size=32):
+
+
+# Funkcja do ładowania danych treningowych, walidacyjnych i testowych
+def load_data(train_dir, val_dir, test_dir, image_size=(128, 128), batch_size=128):
 
     # Ładowanie danych treningowych
     train_dataset = tf.keras.utils.image_dataset_from_directory(
@@ -31,34 +32,58 @@ def load_data(train_dir, val_dir, test_dir, image_size=(128, 128), batch_size=32
     return train_dataset, val_dataset, test_dataset
 
 
+# Funkcja do budowania modelu
 def build_model(input_shape, num_classes):
     model = tf.keras.Sequential([
-        # Warstwa wejściowa z zdefiniowanym kształtem wejścia
-        tf.keras.layers.Input(shape=input_shape),
-
         # Warstwa konwolucyjna 1
-        tf.keras.layers.Conv2D(32, (3, 3), activation='relu'),
+        tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=input_shape),
+        tf.keras.layers.BatchNormalization(),
         tf.keras.layers.MaxPooling2D((2, 2)),
 
         # Warstwa konwolucyjna 2
         tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+        tf.keras.layers.BatchNormalization(),
         tf.keras.layers.MaxPooling2D((2, 2)),
 
         # Warstwa konwolucyjna 3
         tf.keras.layers.Conv2D(128, (3, 3), activation='relu'),
+        tf.keras.layers.BatchNormalization(),
         tf.keras.layers.MaxPooling2D((2, 2)),
 
-        # Warstwa spłaszczająca
+        # Warstwa konwolucyjna 4
+        tf.keras.layers.Conv2D(256, (3, 3), activation='relu'),
+        tf.keras.layers.BatchNormalization(),
+        tf.keras.layers.MaxPooling2D((2, 2)),
+
+        # Warstwy gęste
         tf.keras.layers.Flatten(),
-
-        # Warstwa gęsta (Fully connected)
-        tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dropout(0.5),  # Dropout dla regularizacji
-
-        # Warstwa wyjściowa (softmax dla klasyfikacji wieloklasowej)
+        tf.keras.layers.Dense(512, activation='relu'),
+        tf.keras.layers.Dropout(0.5),
         tf.keras.layers.Dense(num_classes, activation='softmax')
     ])
-
     return model
 
 
+# Funkcja do trenowania modelu
+def train_model(train_dir, val_dir, test_dir, image_size=(128, 128), batch_size=32, epochs=10):
+    # Ładowanie danych
+    train_dataset, val_dataset, test_dataset = load_data(train_dir, val_dir, test_dir, image_size, batch_size)
+
+    # Budowanie modelu
+    model = build_model(input_shape=(128, 128, 3), num_classes=len(train_dataset.class_names))
+
+    # Kompilowanie modelu
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+    # Trening modelu
+    history = model.fit(
+        train_dataset,
+        validation_data=val_dataset,
+        epochs=epochs
+    )
+
+    # Ocena modelu na danych testowych
+    test_loss, test_accuracy = model.evaluate(test_dataset)
+    print(f'Test accuracy: {test_accuracy * 100:.2f}%')
+
+    return model, history

@@ -3,7 +3,7 @@ import shutil
 import random
 
 
-def split_dataset(input_folder, output_folder, train_ratio=0.7, val_ratio=0.15, test_ratio=0.15):
+def split_dataset(input_folder, output_folder, train_ratio=0.8, val_ratio=0.1, test_ratio=0.1):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
@@ -30,10 +30,11 @@ def split_dataset(input_folder, output_folder, train_ratio=0.7, val_ratio=0.15, 
         total_files = len(files)
         train_end = int(total_files * train_ratio)
         val_end = train_end + int(total_files * val_ratio)
+        test_end = val_end + int(total_files * test_ratio)
 
         train_files = files[:train_end]
         val_files = files[train_end:val_end]
-        test_files = files[val_end:]
+        test_files = files[val_end:test_end]
 
         # Przenoszenie plików do odpowiednich folderów
         for file_group, target_folder in zip([train_files, val_files, test_files],
@@ -47,9 +48,3 @@ def split_dataset(input_folder, output_folder, train_ratio=0.7, val_ratio=0.15, 
                 dest = os.path.join(category_target_folder, file)
                 shutil.copy(src, dest)  # Kopiowanie plików
                 print(f"Skopiowano {src} -> {dest}")
-
-
-
-
-
-

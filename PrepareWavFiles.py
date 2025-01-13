@@ -23,14 +23,16 @@ def process_and_save_mel_spectrograms(main_folder, output_folder, n_mels=128, im
 
                 print(f'Wysyłam plik: {wav_file} do: {output_file}')
                 try:
-                    y, sr = librosa.load(wav_file, sr=None)
+                    y, sr = librosa.load(wav_file, sr=22050)
 
                     # Wyliczenie mel-spektrogramu
                     S_mel = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=n_mels)
                     S_mel_db = librosa.amplitude_to_db(S_mel, ref=np.max)
 
                     # Skalowanie
-                    S_mel_db_normalized = (S_mel_db - np.min(S_mel_db)) / (np.max(S_mel_db) - np.min(S_mel_db))
+                    S_mel_db_normalized = (S_mel_db - np.mean(S_mel_db)) / np.std(S_mel_db)
+                    S_mel_db_normalized = np.clip(S_mel_db_normalized, -2, 2)
+                    S_mel_db_normalized = (S_mel_db_normalized + 2) / 4  # Skaluje wartości do zakresu [0, 1]
 
                     # Przekształcenie dla (na pozniej) CNN
                     resized_S_mel_db = plt.cm.viridis(S_mel_db_normalized)  # Skalowanie barwne
@@ -50,7 +52,8 @@ def process_and_save_mel_spectrograms(main_folder, output_folder, n_mels=128, im
 
 # Iteruje tylko po wybranych kategoriach
 def process_wav_files_categories(main_folder):
-    categories = ['down', 'up', 'yes', 'no', 'stop']
+    categories = sorted(['down', 'go', 'left', 'no', 'off', 'on', 'right', 'stop', 'up', 'yes', 'backward'])
+
     selected_files = []
 
     for category in categories:
