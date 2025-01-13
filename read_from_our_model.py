@@ -44,4 +44,4 @@ def predict_command_from_wav(wav_path):
 
 
 # Testowanie na pojedynczym pliku WAV
-predict_command_from_wav('left.wav')
+predict_command_from_wav('recorded_command.wav')
