@@ -5,7 +5,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 # Ładowanie modelu
-model = tf.keras.models.load_model('model.h5')
+model = tf.keras.models.load_model('model_b1.h5')
 
 
 # Funkcja do konwersji pliku WAV na spektrogram Mel
@@ -44,4 +44,4 @@ def predict_command_from_wav(wav_path):
 
 
 # Testowanie na pojedynczym pliku WAV
-predict_command_from_wav('recorded_command.wav')
+predict_command_from_wav("off2.wav")

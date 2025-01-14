@@ -98,7 +98,7 @@ output_split = "MelSpectrograms_splitted"
 
 SAMPLE_RATE = 22050
 DURATION = 5
-OUTPUT_FILE = input("Podaj nazwę pliku, jako nazwa_klasy_Imie_numer): ")
+OUTPUT_FILE = "recorded_command.wav"
 
 command_record.record_audio(OUTPUT_FILE, DURATION, SAMPLE_RATE)
 
