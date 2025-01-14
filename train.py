@@ -1,6 +1,5 @@
 import tensorflow as tf
-
-
+import os
 
 # Funkcja do ładowania danych treningowych, walidacyjnych i testowych
 def load_data(train_dir, val_dir, test_dir, image_size=(128, 128), batch_size=128):
@@ -75,11 +74,25 @@ def train_model(train_dir, val_dir, test_dir, image_size=(128, 128), batch_size=
     # Kompilowanie modelu
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
+    # Dodanie EarlyStopping i ModelCheckpoint
+    early_stopping = tf.keras.callbacks.EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True
+    )
+
+    model_checkpoint = tf.keras.callbacks.ModelCheckpoint(
+        "best_model.h5",
+        monitor="val_loss",
+        save_best_only=True
+    )
+
     # Trening modelu
     history = model.fit(
         train_dataset,
         validation_data=val_dataset,
-        epochs=epochs
+        epochs=epochs,
+        callbacks=[early_stopping, model_checkpoint]
     )
 
     # Ocena modelu na danych testowych
