@@ -102,3 +102,8 @@ model.save('model_b1.h5')
 
 # Zapis historii treningu
 pd.DataFrame(history.history).to_csv('training_history_model_b1.csv', index=False)
+
+
+SAMPLE_RATE = 22050
+DURATION = 5
+OUTPUT_FILE = input("Podaj nazwę pliku, w którym ma zostać zapisane nagranie (z rozszerzeniem .wav): ")
