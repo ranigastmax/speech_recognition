@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f559f251-3333-4332-8f22-0cac029ab7c3" name="Changes" comment="poprawy normalizacji, zmienione proporcje rozdzielania plików na test, val, train. nowy plik do wygrywania dźwięku i sprawdzenia czy model rozpoznaje, nowy model z większą dokładnością, poprawy drobnych błędów">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/command_record.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/read_from_our_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_from_our_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +48,10 @@
   "keyToString": {
     "Python.main.executor": "Run",
     "Python.read_from_our_model.executor": "Run",
-    "Python.train.executor": "Run",
+    "Python.train.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Tadziq/PycharmProjects/speech_recognition/read_from_our_model.py",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
