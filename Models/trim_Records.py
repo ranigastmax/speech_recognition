@@ -8,7 +8,7 @@ output_folder = "C:/Users/Wojtek/PycharmProjects/speech_recognition/Our_Records_
 os.makedirs(output_folder, exist_ok=True)
 
 
-def trim_audio_files(input_folder, output_folder, sample_rate=22050, top_db_value=18):
+def trim_audio_files(input_folder, output_folder, sample_rate=22050, top_db_value=22):
     for file_name in os.listdir(input_folder):
         if file_name.endswith(".wav"):
             input_file_path = os.path.join(input_folder, file_name)

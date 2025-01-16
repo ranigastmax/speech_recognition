@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f559f251-3333-4332-8f22-0cac029ab7c3" name="Changes" comment="trimming_and records">
+    <list default="true" id="f559f251-3333-4332-8f22-0cac029ab7c3" name="Changes" comment="trimming_and records 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AudioData/down/00176480_nohash_0.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AudioData/down/004ae714_nohash_0.wav" beforeDir="false" />
@@ -2007,28 +2007,51 @@
       <change beforePath="$PROJECT_DIR$/AudioData/down/890e4ee2_nohash_1.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AudioData/down/8910e5ef_nohash_0.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/trim_Records.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/trim_Records.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/backward_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/backward_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/down_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/down_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/go_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/go_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/left_Wojtek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/backward_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/backward_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/backward_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/backward_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/backward_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/backward_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/down_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/down_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/down_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/down_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/down_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/down_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/go_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/go_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/go_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/go_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/go_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/go_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/left_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/left_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/left_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/left_Wojtek_1.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Our_Records_5s/left_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/no_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/no_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/off_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/off_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/on_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/on_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/right_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/right_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/stop_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/stop_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/up_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/up_Wojtek_2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/yes_Wojtek_1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Our_Records_5s/yes_Wojtek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/no_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/no_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/no_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/no_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/no_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/no_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/off_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/off_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/off_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/off_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/off_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/off_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/on_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/on_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/on_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/on_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/on_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/on_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/right_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/right_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/right_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/right_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/right_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/right_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/stop_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/stop_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/stop_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/stop_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/stop_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/stop_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/up_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/up_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/up_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/up_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/up_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/up_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/yes_Tadek_1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/yes_Tadek_2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/yes_Wojtek_1.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/yes_Wojtek_1.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Our_Records_5s/yes_Wojtek_2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Our_Records_5s/yes_Wojtek_2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2051,12 +2074,12 @@
     &quot;assignee&quot;: &quot;Tadeq-hash&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ranigastmax/speech_recognition.git",
-    "accountId": "c98a8be6-c59d-40b5-8e08-cf1558cbb3f3"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ranigastmax/speech_recognition.git&quot;,
+    &quot;accountId&quot;: &quot;c98a8be6-c59d-40b5-8e08-cf1558cbb3f3&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -2068,6 +2091,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.command_record.executor": "Run",
     "Python.main.executor": "Run",
     "Python.read_from_our_model.executor": "Run",
     "Python.train.executor": "Debug",
@@ -2142,7 +2166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736879354274</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="trimming_and records 2">
+      <option name="closed" value="true" />
+      <created>1736885557632</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736885557632</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -2162,7 +2194,8 @@
     <MESSAGE value="zepsuty commit" />
     <MESSAGE value="new main" />
     <MESSAGE value="trimming_and records" />
-    <option name="LAST_COMMIT_MESSAGE" value="trimming_and records" />
+    <MESSAGE value="trimming_and records 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="trimming_and records 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
