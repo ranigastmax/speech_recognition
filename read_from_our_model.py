@@ -48,6 +48,9 @@ def test_all_wav_files(folder_path):
     predictions = []
     actual_labels = []
 
+    correct_by_class = Counter()
+    total_by_class = Counter()
+
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".wav"):
 
@@ -61,43 +64,55 @@ def test_all_wav_files(folder_path):
 
             # Wyodrębnianie grupy z nazwy pliku
             actual_label = file_name.split('_')[0]  # Wszystko przed znakiem '_'
-            predicted_label = predict_command_from_wav(file_path)
 
             # Zliczanie poprawnych przewidywań
             if actual_label == predicted_label:
                 correct_predictions += 1
+                correct_by_class[actual_label] += 1
+            total_files += 1
+            total_by_class[actual_label] += 1
 
             predictions.append(predicted_label)
             actual_labels.append(actual_label)
-            total_files += 1
 
     accuracy = (correct_predictions / total_files) * 100
     print(f"Liczba przetworzonych plików: {total_files}")
     print(f"Poprawne przewidywania: {correct_predictions}")
     print(f"Dokładność: {accuracy:.2f}%")
 
-    # Tworzenie wykresu
-    plt.figure(figsize=(10, 5))
-    counter_actual = Counter(actual_labels)
-    counter_predicted = Counter(predictions)
+    # Wykres poprawnych i niepoprawnych dopasowań dla każdej klasy
+    plt.figure(figsize=(12, 6))
 
-    labels = sorted(counter_actual.keys() | counter_predicted.keys())
-    actual_counts = [counter_actual.get(label, 0) for label in labels]
-    predicted_counts = [counter_predicted.get(label, 0) for label in labels]
+    # Wszystkie klasy (ze wszystkimi przewidywaniami, niezależnie od wyniku)
+    classes = sorted(total_by_class.keys())  # Pokazuje wszystkie klasy, wliczając te z 0%
+    actual_counts = [total_by_class[label] for label in classes]
+    correct_counts = [correct_by_class[label] for label in classes]
 
-    x = np.arange(len(labels))
+    x = np.arange(len(classes))
     width = 0.35
 
-    plt.bar(x - width / 2, actual_counts, width, label='Rzeczywiste')
-    plt.bar(x + width / 2, predicted_counts, width, label='Przewidywane')
+    # Poprawne dopasowania (zielone) i niepoprawne dopasowania (czerwone)
+    plt.bar(x - width / 2, correct_counts, width, label='Poprawne')
+    plt.bar(x + width / 2, np.subtract(actual_counts, correct_counts), width, label='Niepoprawne')
 
     plt.xlabel('Komendy')
     plt.ylabel('Liczba')
-    plt.title('Porównanie liczby rzeczywistych i przewidywanych etykiet')
-    plt.xticks(x, labels, rotation=45)
+    plt.title('Poprawne i niepoprawne dopasowania dla każdej klasy')
+    plt.xticks(x, classes, rotation=45)
     plt.legend()
     plt.tight_layout()
     plt.show()
+
+    # Procent poprawnych dopasowań dla każdej klasy
+    class_accuracies = {label: (correct_by_class[label] / total_by_class[label]) * 100
+                        if total_by_class[label] != 0 else 0
+                        for label in classes}
+
+    print("Procent poprawnych dopasowań dla każdej klasy:")
+    for label, acc in class_accuracies.items():
+        print(f"{label}: {acc:.2f}%")
+
+    print(f"\nCałościowa dokładność: {accuracy:.2f}%")
 
     return accuracy
 
